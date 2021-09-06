@@ -12,12 +12,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {loadMoviesActionCreate} from "./redux/actionCreators";
 
 export default function App() {
-    let state = useSelector(state => state);
+    let { results } = useSelector(({ moviesResponse }) => moviesResponse);
     let dispatch = useDispatch()
-    let startRenderMovies = state.moviesResponse.results
-
-    // console.log('state', state)
-    // console.log('first render', startRenderMovies)
 
     useEffect(() => {
         getMovies().then(value => dispatch(loadMoviesActionCreate(value)));
@@ -35,9 +31,11 @@ export default function App() {
 
       </header>
 
-            {/*{*/}
-            {/*    startRenderMovies.map(value => <div>{value.title}</div>)*/}
-            {/*}*/}
+            {
+              results
+                  ? results.map(value => <div key={value.id}>{value.title}</div>)
+                  : <div>Loading...</div>
+            }
     </div>
   );
 }
