@@ -14,10 +14,11 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_MOVIES:
             // console.log(action.payload.data)
+            // console.log(action.payload)
             return {...state, moviesResponse: {...action.payload.data}}
         case SEARCH_MOVIE_BY_TITLE:
-            let searchByTitleResult = action.payload
-            return {...state, allMovies: [...searchByTitleResult]}
+            // let searchByTitleResult = action.payload
+            return {...state, moviesSearchResponse: {...action.payload.data}}
         default:
             return state;
     }

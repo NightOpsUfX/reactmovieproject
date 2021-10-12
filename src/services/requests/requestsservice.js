@@ -20,15 +20,15 @@ const getSingleMovie = async (movie_id) => await axiosInstance.get(`/movie/${mov
 const getGenres = async () => await axiosInstance.get('/genre/movie/list');
 
 // find movie by word
-const findMovieByWord = async (searchWord) => {
+const getMovieByWord = async (searchWord) => {
     let results = await axiosInstance.get(`/search/movie?query=${searchWord}`);
     return results
 }
 
 // find all movies by genre
-const findMoviesByGenre = async (genreIdArray, pageNumber = 1) => {
+const getMoviesByGenre = async (genreIdArray, pageNumber = 1) => {
     let results =  await axiosInstance.get(`discover/movie?with_genres=${genreIdArray}&page=${pageNumber}`);
         return results
     }
 
-export {getMovies, getGenres, getSingleMovie, findMovieByWord, findMoviesByGenre}
+export {getMovies, getGenres, getSingleMovie, getMovieByWord, getMoviesByGenre}
